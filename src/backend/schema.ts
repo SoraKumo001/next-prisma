@@ -22,7 +22,7 @@ export const schema = makeSchema({
       "src",
       "backend",
       "generated",
-      "exus-typegen.ts"
+      "nexus-typegen.ts"
     ),
     schema: join(
       process.cwd(),
