@@ -1,0 +1,35 @@
+{
+  "name": "next-prisma",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "yarn start:docker && next",
+    "start:docker": "docker compose -f docker/docker-compose.yml up -d --build",
+    "seed": "ts-node -T -O {\\\"module\\\":\\\"commonjs\\\"} prisma/seed",
+    "generate:nexus": "ts-node -T -O {\\\"module\\\":\\\"commonjs\\\"} src/backend/schema",
+    "generate:prisma": "prisma generate",
+    "migrate:prisma": "prisma migrate dev"
+  },
+  "dependencies": {
+    "@paljs/plugins": "^5.2.0",
+    "@prisma/client": "^4.8.1",
+    "add": "^2.0.6",
+    "graphql": "^16.6.0",
+    "graphql-yoga": "^3.3.0",
+    "next": "^13.1.1",
+    "nexus": "^1.3.0",
+    "nexus-prisma": "^1.0.0",
+    "prisma": "^4.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "yarn": "^1.22.19"
+  },
+  "devDependencies": {
+    "@types/node": "18.11.18",
+    "@types/react": "18.0.26",
+    "ts-node": "^10.9.1",
+    "typescript": "4.9.4"
+  },
+  "license": "MIT",
+  "author": "SoraKumo <info@croud.jp>"
+}
