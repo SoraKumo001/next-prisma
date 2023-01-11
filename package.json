@@ -13,7 +13,6 @@
   "dependencies": {
     "@paljs/plugins": "^5.2.0",
     "@prisma/client": "^4.8.1",
-    "add": "^2.0.6",
     "graphql": "^16.6.0",
     "graphql-yoga": "^3.3.0",
     "next": "^13.1.1",
@@ -21,8 +20,7 @@
     "nexus-prisma": "^1.0.1",
     "prisma": "^4.8.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "yarn": "^1.22.19"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/node": "18.11.18",
