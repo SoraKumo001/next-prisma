@@ -17,13 +17,6 @@ export const schema = makeSchema({
     ],
   },
   outputs: {
-    typegen: join(
-      process.cwd(),
-      "src",
-      "backend",
-      "generated",
-      "nexus-typegen.ts"
-    ),
     schema: join(
       process.cwd(),
       "src",

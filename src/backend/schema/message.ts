@@ -15,9 +15,9 @@ export const MessageType = objectType({
         const select = new PrismaSelect(info).value;
         return prisma.message
           .findUnique({
-            where: { id: _parent.id! },
+            where: { id: _parent.id },
           })
-          .user<{}>({ ...select });
+          .user({ ...select });
       },
     });
   },
@@ -27,7 +27,7 @@ export const Messages = queryField("messages", {
   type: nonNull(list("Message")),
   resolve: (_parent, {}, { prisma }, info) => {
     const select = new PrismaSelect(info).value.select;
-    return prisma.message.findMany<{}>({
+    return prisma.message.findMany({
       select: { ...select, id: true },
     });
   },

@@ -16,7 +16,7 @@ export const Users = queryField("allUsers", {
   type: nonNull(list("User")),
   resolve: (_parent, {}, { prisma }, info) => {
     const select = new PrismaSelect(info).value.select;
-    return prisma.user.findMany<{}>({
+    return prisma.user.findMany({
       select: { ...select, id: true },
     });
   },
