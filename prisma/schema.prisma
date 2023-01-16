@@ -6,7 +6,7 @@ generator client {
 }
 
 generator nexusPrisma {
-   provider = "nexus-prisma"
+  provider = "nexus-prisma"
 }
 
 datasource db {
@@ -15,15 +15,30 @@ datasource db {
 }
 
 model User {
-  id      Int       @id @default(autoincrement())
-  email   String    @unique
-  name    String
-  Message Message[]
+  id        Int       @id @default(autoincrement())
+  email     String    @unique
+  name      String
+  hash      String
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @default(now()) @updatedAt @map("updated_at")
+  Message   Message[]
+   File      File[]
 }
 
 model Message {
-  id      Int    @id @default(autoincrement())
-  message String
-  user    User   @relation(fields: [userId], references: [id])
-  userId  Int
+  id        Int      @id @default(autoincrement())
+  message   String
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
+}
+
+model File {
+  id        Int      @id @default(autoincrement())
+  data      Bytes
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map("updated_at")
 }

@@ -5,6 +5,7 @@ export type Context = {
   res: NextApiResponse;
   req: NextApiRequest;
   prisma: PrismaClient;
+  userId?: number;
 };
 
 export const prisma = new PrismaClient({

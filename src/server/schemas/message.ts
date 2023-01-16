@@ -1,6 +1,7 @@
 import { PrismaSelect } from "@paljs/plugins";
 import { list, nonNull, objectType, queryField } from "nexus";
 import { Message } from "nexus-prisma";
+import { throwNull } from "../libs/throwNull";
 import { UserType } from "./user";
 
 export const MessageType = objectType({
@@ -17,18 +18,19 @@ export const MessageType = objectType({
           .findUnique({
             where: { id: _parent.id },
           })
-          .user({ ...select });
+          .user({ ...select })
+          .then(throwNull);
       },
     });
   },
 });
 
-export const Messages = queryField("messages", {
-  type: nonNull(list("Message")),
-  resolve: (_parent, {}, { prisma }, info) => {
-    const select = new PrismaSelect(info).value.select;
-    return prisma.message.findMany({
-      select: { ...select, id: true },
-    });
-  },
-});
+// export const Messages = queryField("messages", {
+//   type: nonNull(list("Message")),
+//   resolve: (_parent, {}, { prisma }, info) => {
+//     const select = new PrismaSelect(info).value.select;
+//     return prisma.message.findMany<{}>({
+//       select: { ...select, id: true },
+//     });
+//   },
+// });
